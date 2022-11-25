@@ -25,7 +25,7 @@ ckpt/*
 *.sh
 
 # ignore training script file
-src/datahandler/*
+# src/datahandler/*
 src/loss/*
 src/model/*
 src/trainer/*
