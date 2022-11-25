@@ -28,5 +28,5 @@ ckpt/*
 # src/datahandler/*
 # src/loss/*
 src/model/*
-src/trainer/*
+# src/trainer/*
 # src/util/*
