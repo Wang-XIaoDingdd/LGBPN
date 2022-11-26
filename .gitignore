@@ -27,6 +27,6 @@ ckpt/*
 # ignore training script file
 # src/datahandler/*
 # src/loss/*
-src/model/*
+# src/model/*
 # src/trainer/*
 # src/util/*

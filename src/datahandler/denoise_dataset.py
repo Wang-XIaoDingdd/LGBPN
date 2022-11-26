@@ -8,7 +8,7 @@ from torch.utils.data import Dataset
 import scipy
 import mat73
 
-from ..util.util import rot_hflip_img, tensor2np, np2tensor, mean_conv2d, randperm_img
+from ..util.util import rot_hflip_img, tensor2np, np2tensor
 
     
 class DenoiseDataSet(Dataset):
@@ -29,6 +29,7 @@ class DenoiseDataSet(Dataset):
             ratio_data (float)  : ratio of data to be used. (activated when n_data=None, default: None = all data)
         '''
         self.dataset_dir = './dataset'
+        # self.dataset_dir = '../AP-BSN/dataset'
         if not os.path.isdir(self.dataset_dir):
             raise Exception('dataset directory is not exist')
         
