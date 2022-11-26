@@ -78,6 +78,11 @@ Arguments:
 ```
 
 
+Pretrained Model:
+
+Please download the model trained on SIDD medium from [this link](https://drive.google.com/file/d/1AgRYGoAoo6rtlaf5FtDQQxsoZpmgWDxO/view?usp=share_link). Put it in '/output/LGBPN_SIDD/checkpoint/LGBPN_SIDD_20.pth'.
+
+
 Examples:
 
 #### Test SIDD dataset for 20 epoch model in gpu:0
