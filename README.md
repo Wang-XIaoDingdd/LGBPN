@@ -78,22 +78,32 @@ Arguments:
 ```
 
 
-Pretrained Model:
 
-Please download the model trained on SIDD medium from [this link](https://drive.google.com/file/d/1AgRYGoAoo6rtlaf5FtDQQxsoZpmgWDxO/view?usp=share_link). Put it in path
-```
-'/output/LGBPN_SIDD/checkpoint/LGBPN_SIDD_20.pth'
-```
+
 
 
 Examples:
 
 #### Test SIDD dataset for 20 epoch model in gpu:0
+
+Please download the model trained on SIDD medium from [this link](https://drive.google.com/file/d/1AgRYGoAoo6rtlaf5FtDQQxsoZpmgWDxO/view?usp=share_link). Put it in path
+```
+/output/LGBPN_SIDD/checkpoint/LGBPN_SIDD_20.pth
+```
+
+Then run:
 ```
 python test.py -s your_SIDD_model -c APBSN_SIDD -g 0 -e 20
 ```
 
 #### Test DND dataset for 20 epoch model in gpu:0
+
+Please download the model trained on DND from [this link](https://drive.google.com/file/d/1S7j9PQXipAp0YfdMqUwnN_JJui1hAWSE/view?usp=share_link). Put it in path
+```
+/output/LGBPN_DND/checkpoint/LGBPN_DND_20.pth
+```
+
+Then run:
 ```
 python test.py -s your_DND_model -c APBSN_SIDD -g 0 -e 20
 ```
