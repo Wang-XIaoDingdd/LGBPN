@@ -45,7 +45,7 @@ We follow the dataset setup in AP-BSN. Please click [this link](https://github.c
 
 <p id="2"></p > 
 
-## Training&Testing
+## Training & Testing
 
 ### Training 
 
