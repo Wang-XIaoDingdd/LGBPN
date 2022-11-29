@@ -115,6 +115,8 @@ python test.py -s your_DND_model -c APBSN_SIDD -g 0 -e 20
 
 ### Quantitative results
 
+![res](./figs/res.jpg)
+
 Please refer our paper for more detailed results.
 
 
