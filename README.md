@@ -23,16 +23,27 @@ _Despite the significant results on synthetic noise under simplified assumptions
 
 ## Contents
 
-1. [Dataset](#Dataset)
+<!-- 1. [Dataset](#Dataset)
 1. [Training&Testing](#Training&Testing)
 1. [Results](#Results)
-1. [Acknowledgement](#Acknowledgement)
+1. [Acknowledgement](#Acknowledgement) -->
 
+[1. Dataset](#1) 
 
-### Dataset
+[2. Training & Testing](#2) 
+
+[3. Results](#3) 
+
+[4. Acknowledgement](#4) 
+
+<p id="1"></p > 
+
+## Dataset
 
 We follow the dataset setup in AP-BSN. Please click [this link](https://github.com/wooseoklee4/AP-BSN#directory) for detailed preparation description.
 
+
+<p id="2"></p > 
 
 ## Training&Testing
 
@@ -122,6 +133,8 @@ python test.py -s your_DND_model -c APBSN_DND -g 0 -e 20
 
 ---
 
+<p id="3"></p >
+
 ## Results
 
 ### Quantitative results
@@ -138,6 +151,7 @@ Please refer our paper for more detailed results.
 
 ![results on SIDD val](./figs/vis2.jpeg)
 
+<p id="4"></p >
 
 ## Acknowledgement
 
