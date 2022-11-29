@@ -24,7 +24,7 @@ _Despite the significant results on synthetic noise under simplified assumptions
 ## Contents
 
 1. [Dataset](#Dataset)
-1. [Training&nbsp;&&nbsp;Test](#Training&nbsp;&&nbsp;Test)
+1. [Training&Testing](#Training&Testing)
 1. [Results](#Results)
 1. [Acknowledgement](#Acknowledgement)
 
@@ -34,7 +34,7 @@ _Despite the significant results on synthetic noise under simplified assumptions
 We follow the dataset setup in AP-BSN. Please click [this link](https://github.com/wooseoklee4/AP-BSN#directory) for detailed preparation description.
 
 
-## Training&nbsp;&&nbsp;Test
+## Training&Testing
 
 ### Training 
 
