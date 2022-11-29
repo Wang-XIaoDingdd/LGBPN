@@ -20,12 +20,21 @@ _Despite the significant results on synthetic noise under simplified assumptions
 - opencv 4.5.5
 - scikit-image 0.16.2
 
+
+## Contents
+
+1. [Dataset](#Dataset)
+1. [Training&nbsp;&&nbsp;Test](#Training&nbsp;&&nbsp;Test)
+1. [Results](#Results)
+1. [Acknowledgement](#Acknowledgement)
+
+
 ### Dataset
 
 We follow the dataset setup in AP-BSN. Please click [this link](https://github.com/wooseoklee4/AP-BSN#directory) for detailed preparation description.
 
 
-## Training & Test
+## Training&nbsp;&&nbsp;Test
 
 ### Training 
 
@@ -93,7 +102,7 @@ Please download the model trained on SIDD medium from [this link](https://drive.
 
 Then run:
 ```
-# test LGBPN model for SIDD dataset. You can find corresponding results in Table 1 of the main paper.
+# You can find corresponding results in Table 1 of the main paper.
 python test.py -s your_SIDD_model -c APBSN_SIDD -g 0 -e 20
 ```
 
@@ -106,7 +115,7 @@ Please download the model trained on DND from [this link](https://drive.google.c
 
 Then run:
 ```
-# test LGBPN model for DND dataset. You can find corresponding results in Table 1 of the main paper.
+# You can find corresponding results in Table 1 of the main paper.
 python test.py -s your_DND_model -c APBSN_DND -g 0 -e 20
 ```
 
