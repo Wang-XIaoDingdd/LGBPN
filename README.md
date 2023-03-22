@@ -74,7 +74,7 @@ python train.py -s your_SIDD_model_name -c APBSN_SIDD/BSN_SIDD -g '0'
 
 #### Train our method for the DND dataset using gpu:0
 ```
-python train.py -s your_DND_model_name -c -c APBSN_DND/BSN_DND -g '0'
+python train.py -s your_DND_model_name -c APBSN_DND/BSN_DND -g '0'
 ```
 
 ### Test

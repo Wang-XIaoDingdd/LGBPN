@@ -8,7 +8,8 @@ model:
     R3: True
     R3_T: 8
     R3_p: 0.16
-
+    SIDD: False
+    
     bsn: My_BSN
 
     in_ch: 3
