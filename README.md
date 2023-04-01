@@ -1,6 +1,6 @@
 # LG-BPN: Local and Global Blind-Patch Network for Self-Supervised Real-World Denoising
 
-This code is the PyTorch implementation of _LG-BPN: Local and Global Blind-Patch Network for Self-Supervised Real-World Denoising_.
+This code is the PyTorch implementation of _LG-BPN: Local and Global Blind-Patch Network for Self-Supervised Real-World Denoising_. (CVPR, 2023)
 
 
 ![main_fig](./figs/network8.jpg)
