@@ -1,5 +1,6 @@
 # LG-BPN: Local and Global Blind-Patch Network for Self-Supervised Real-World Denoising
 
+Zichun Wang, [Ying Fu](https://ying-fu.github.io/), Ji Liu, [Yulun Zhang](http://yulunzhang.com/).
 This code is the PyTorch implementation of _LG-BPN: Local and Global Blind-Patch Network for Self-Supervised Real-World Denoising_. (CVPR, 2023)
 
 
@@ -152,6 +153,20 @@ Please refer our paper for more detailed results.
 ![results on SIDD val](./figs/vis2.jpeg)
 
 <p id="4"></p >
+
+
+## Citation
+
+If you find the code helpful in your resarch or work, please cite the following paper(s).
+```
+@inproceedings{wang2023lgbpn,
+title={{LG}-{BPN}: Local and Global Blind-Patch Network for Self-Supervised Real-World Denoising},
+author={Wang, Zichun and Fu, Ying and Liu, Ji and Zhang, Yulun},
+booktitle={Conference on Computer Vision and Pattern Recognition 2023},
+year={2023}
+}
+```
+
 
 ## Acknowledgement
 
