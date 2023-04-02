@@ -9,7 +9,7 @@ model:
     R3_T: 8
     R3_p: 0.16
     SIDD: False
-    
+
     bsn: My_BSN
 
     in_ch: 3
@@ -28,11 +28,9 @@ training:
     crop_size: [120, 120]
     aug: ['hflip', 'rot']
     n_repeat: 4
-#    n_data: 8
 
 
   batch_size: 8
-#  batch_size: 1
 
   max_epoch: 20
 

@@ -4,6 +4,8 @@ import torch.nn as nn
 import torch.nn.functional as F
 
 from ..util.util import pixel_shuffle_down_sampling, pixel_shuffle_up_sampling, pixel_shuffle_up_sampling_pd, pixel_shuffle_down_sampling_pd
+# from src.util.util import pixel_shuffle_down_sampling, pixel_shuffle_up_sampling, pixel_shuffle_up_sampling_pd, pixel_shuffle_down_sampling_pd
+
 from . import regist_model
 from .DBSNl import LGBPN
 from PIL import Image
@@ -14,7 +16,7 @@ from einops import rearrange, repeat
 
 @regist_model
 class BSN(nn.Module):
-    def __init__(self, pd_a=5, pd_b=2, pd_pad=2, R3=True, R3_T=8, R3_p=0.16,
+    def __init__(self, pd_a=5, pd_b=2, pd_pad=2, R3=True, R3_T=8, R3_p=0.16, SIDD=True,
                  bsn='DBSNl', in_ch=3, bsn_base_ch=128, bsn_num_module=9):
         '''
         Args:
@@ -38,10 +40,11 @@ class BSN(nn.Module):
         self.R3 = R3
         self.R3_T = R3_T
         self.R3_p = R3_p
+        self.SIDD = SIDD
 
         # define network
         if bsn == 'My_BSN':
-            self.bsn = LGBPN(in_ch, in_ch, bsn_base_ch, bsn_num_module, group=1, head_ch=24)
+            self.bsn = LGBPN(in_ch, in_ch, bsn_base_ch, bsn_num_module, group=1, head_ch=24, SIDD=SIDD)
         else:
             raise NotImplementedError('bsn %s is not implemented' % bsn)
 

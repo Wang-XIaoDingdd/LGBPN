@@ -9,8 +9,9 @@ from src.trainer import get_trainer_class
 def main():
     # parsing configuration
     args = argparse.ArgumentParser()
-    args.add_argument('-s', '--session_name', default='my_model',  type=str)
+    args.add_argument('-s', '--session_name', default='LGBPN_SIDD',  type=str)
     args.add_argument('-c', '--config',       default='APBSN_SIDD/BSN_SIDD',  type=str)
+    # args.add_argument('-c', '--config',       default='APBSN_DND/BSN_DND',  type=str)
     args.add_argument('-e', '--ckpt_epoch',   default=20,     type=int)
     args.add_argument('-g', '--gpu',          default='0',  type=str)
     args.add_argument(      '--pretrained',   default=None,  type=str)

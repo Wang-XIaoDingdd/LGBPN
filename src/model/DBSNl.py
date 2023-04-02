@@ -13,7 +13,7 @@ from src.model.restormer_arch import DTB
 
 
 class local_branch(nn.Module):
-    def __init__(self, stride, in_ch, num_module, group=1, pattern=0, head_ch=None):
+    def __init__(self, stride, in_ch, num_module, group=1, pattern=0, head_ch=None, SIDD=True):
         super().__init__()
 
         kernel = 4 * stride + 1  #kernel=9
@@ -37,15 +37,18 @@ class local_branch(nn.Module):
         ly += [nn.ReLU(inplace=True)]
 
         self.body = nn.Sequential(*ly)
+        self.SIDD = SIDD
 
     def forward(self, x, refine=False, dict=None):
-
-        pd_train_br1 = 4
-        pd_test_br1 = 3
-        pd_refine_br1 = 2
-        # pd_train_br1 = 4
-        # pd_test_br1 = 2
-        # pd_refine_br1 = 2
+        
+        if self.SIDD:
+            pd_train_br1 = 4
+            pd_test_br1 = 3
+            pd_refine_br1 = 2
+        else:
+            pd_train_br1 = 4
+            pd_test_br1 = 2
+            pd_refine_br1 = 2
 
         if dict is not None:
             pd_test_br1 = dict['pd_test_br1']
@@ -73,7 +76,7 @@ class local_branch(nn.Module):
             if w % pd_refine_br1 != 0:
                 x = F.pad(x, (0, pd_refine_br1 - w % pd_refine_br1, 0, 0), mode='reflect')
 
-        x = self.Maskconv(x, refine, dict=dict)
+        x = self.Maskconv(x, refine, dict=dict, SIDD=self.SIDD)
 
         if self.training:
             x = pixel_shuffle_down_sampling(x, f=pd_train_br1, pad=2)
@@ -99,7 +102,7 @@ class local_branch(nn.Module):
 
 
 class global_branch(nn.Module):
-    def __init__(self, stride, in_ch, num_module, group=1, head_ch=None):
+    def __init__(self, stride, in_ch, num_module, group=1, head_ch=None, SIDD=True):
         super().__init__()
 
         kernel = 21
@@ -111,15 +114,18 @@ class global_branch(nn.Module):
         self.Maskconv = DSPMC_21(head_ch, in_ch, kernel_size=kernel, stride=1, padding=pad, groups=group, padding_mode='reflect')
 
         self.body = DTB(stride=stride, num_blocks=num_module, dim=in_ch)
+        self.SIDD = SIDD
 
     def forward(self, x, refine=False, dict=None):
-
-        # pd_train_br2 = 5
-        # pd_test_br2 = 4
-        # pd_refine_br2 = 4
-        pd_train_br2 = 5
-        pd_test_br2 = 4
-        pd_refine_br2 = 2
+        
+        if self.SIDD:
+            pd_train_br2 = 5
+            pd_test_br2 = 4
+            pd_refine_br2 = 4
+        else:
+            pd_train_br2 = 5
+            pd_test_br2 = 4
+            pd_refine_br2 = 2
 
 
         if dict is not None:
@@ -148,7 +154,7 @@ class global_branch(nn.Module):
             if w % pd_refine_br2 != 0:
                 x = F.pad(x, (0, pd_refine_br2 - w % pd_refine_br2, 0, 0), mode='reflect')
 
-        x = self.Maskconv(x, refine, dict=dict)
+        x = self.Maskconv(x, refine, dict=dict, SIDD=self.SIDD)
         if self.training:
             x = pixel_shuffle_down_sampling(x, f=pd_train_br2, pad=0)
             x = self.body(x)
@@ -198,21 +204,15 @@ class DSPMC_9(nn.Conv2d):
         # self.mask.detach().cpu().numpy()[0,0,...]
 
 
-    def forward(self, x, refine=False, dict=None):
+    def forward(self, x, refine=False, dict=None, SIDD=True):
 
-        # # p4正常的
-        # pd_test_ratio = 0.6
-        # pd_refine_ratio = 0.3
-        # pd_test_ratio = 0.6
-        # pd_refine_ratio = 0.45
-        pd_test_ratio = 0.72
-        pd_refine_ratio = 0.46
-        # pd_test_ratio = 0.5
-        # pd_refine_ratio = 0.4
+        if SIDD:
+            pd_test_ratio = 0.72
+            pd_refine_ratio = 0.46
+        else:
+            pd_test_ratio = 0.5
+            pd_refine_ratio = 0.4
 
-        # # DBSNl_weightnorm_p4p7_br2restormer_mod_s5
-        # pd_test_ratio = 0.72
-        # pd_refine_ratio = 0.5
         if dict is not None:
             pd_test_ratio = dict['pd_test_ratio']
             pd_refine_ratio = dict['pd_refine_ratio']
@@ -345,17 +345,14 @@ class DSPMC_21(nn.Conv2d):
         # self.mask.detach().cpu().numpy()[0,0,...]
 
 
-    def forward(self, x, refine=False, dict=None):
+    def forward(self, x, refine=False, dict=None, SIDD=True):
 
-        # # p7正常的
-        # pd_test_ratio = 0.6
-        # pd_refine_ratio = 0.4
-        # pd_test_ratio = 1
-        # pd_refine_ratio = 0.35
-        pd_test_ratio = 0.8
-        pd_refine_ratio = 0.43
-        # pd_test_ratio = 0.65
-        # pd_refine_ratio = 0.35
+        if SIDD:
+            pd_test_ratio = 0.8
+            pd_refine_ratio = 0.43
+        else:
+            pd_test_ratio = 0.65
+            pd_refine_ratio = 0.35
 
 
         if dict is not None:
@@ -462,7 +459,7 @@ class DSPMC_21(nn.Conv2d):
 @regist_model
 class LGBPN(nn.Module):
 
-    def __init__(self, in_ch=3, out_ch=3, base_ch=128, num_module=9, pattern='baseline', group=1, head_ch=None, br2_blc=6):
+    def __init__(self, in_ch=3, out_ch=3, base_ch=128, num_module=9, pattern='baseline', group=1, head_ch=None, br2_blc=6, SIDD=True):
         '''
         Args:
             in_ch      : number of input channel
@@ -482,8 +479,8 @@ class LGBPN(nn.Module):
         ly += [nn.ReLU(inplace=True)]
         self.head = nn.Sequential(*ly)
 
-        self.branch1 = local_branch(2, base_ch, num_module, group=group, head_ch=head_ch)
-        self.branch2 = global_branch(stride=3, num_module=[br2_blc], in_ch=base_ch, head_ch=head_ch)
+        self.branch1 = local_branch(2, base_ch, num_module, group=group, head_ch=head_ch, SIDD=SIDD)
+        self.branch2 = global_branch(stride=3, num_module=[br2_blc], in_ch=base_ch, head_ch=head_ch, SIDD=SIDD)
 
         ly = []
         ly += [nn.Conv2d(base_ch * 2, base_ch, kernel_size=1)]
