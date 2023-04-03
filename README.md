@@ -162,7 +162,7 @@ If you find the code helpful in your resarch or work, please cite the following 
 @inproceedings{wang2023lgbpn,
 title={{LG}-{BPN}: Local and Global Blind-Patch Network for Self-Supervised Real-World Denoising},
 author={Wang, Zichun and Fu, Ying and Liu, Ji and Zhang, Yulun},
-booktitle={Conference on Computer Vision and Pattern Recognition 2023},
+booktitle={CVPR},
 year={2023}
 }
 ```
