@@ -2,7 +2,9 @@
 
 Zichun Wang, [Ying Fu](https://ying-fu.github.io/), Ji Liu, [Yulun Zhang](http://yulunzhang.com/), "LG-BPN: Local and Global Blind-Patch Network for Self-Supervised Real-World Denoising", CVPR, 2023
 
+
 [[arXiv](https://arxiv.org/abs/2304.00534)]
+
 
 ![main_fig](./figs/network8.jpg)
 
